@@ -124,9 +124,10 @@ function changeSound() {
   let choice = document.getElementById("soundSelect").value;
 
   const sounds = {
-    rain: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    forest: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    whitenoise: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+    disneypiano: "sound/disneypiano.mp3",
+    lofisound: "sound/lofisound.mp3",
+    relaxcalm: "sound/relaxcalm.mp3",
+    taylorswiftpiano: "sound/taylorswiftpiano.mp3"
   };
 
   if (choice === "off") {
@@ -134,9 +135,11 @@ function changeSound() {
     audio.src = "";
   } else {
     audio.src = sounds[choice];
+    audio.loop = true; // biar muter terus
     audio.play();
   }
 }
+
 
 // ================= TARGET =================
 function saveTarget() {
