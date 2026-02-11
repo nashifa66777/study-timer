@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Tracker Pro+</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- MENU NAVIGASI (INI TEMPAT TOMBOL MENU) -->
+  <nav>
+    <button onclick="showPage('dashboard')">Dashboard</button>
+    <button onclick="showPage('target')">Target</button>
+    <button onclick="showPage('stats')">Statistik</button>
+    <button onclick="showPage('history')">Riwayat</button>
+    <button onclick="showPage('game')">Game</button>
+  </nav>
+
+  <!-- DASHBOARD -->
+<section id="dashboard" class="page">
+  <h1>📚 Study Timer</h1>
+
+  <input type="text" id="studyInput" placeholder="Mau belajar apa?" />
+
+  <div class="timer"><span id="time">00:00:00</span></div>
+
+  <button onclick="startTimer()">Start</button>
+  <button onclick="pauseTimer()">Pause</button>
+  <button onclick="stopTimer()">Stop</button>
+
+  <h2>Total Hari Ini</h2>
+  <p id="todayTotal">00:00:00</p>
+
+  <h3>🎵 Focus Sound</h3>
+  <select id="soundSelect" onchange="changeSound()">
+    <option value="off">Off</option>
+    <option value="rain">Rain</option>
+    <option value="forest">Forest</option>
+    <option value="whitenoise">White Noise</option>
+  </select>
+  <audio id="focusAudio" loop></audio>
+
+</section>
+
+<!-- TARGET -->
+<section id="target" class="page hidden">
+  <h1>🎯 Target Harian</h1>
+  <input type="number" id="targetInput" placeholder="Target jam"/>
+  <button onclick="saveTarget()">Simpan Target</button>
+
+  <h2>Progress</h2>
+  <div class="progress-wrapper">
+    <div class="progress-container">
+      <div id="progressBar"></div>
+    </div>
+    <span id="progressPercent">0%</span>
+  </div>
+
+  <p id="progressText"></p>
+</section>
+
+<!-- STATISTIK -->
+<section id="stats" class="page hidden">
+  <h1>📊 Grafik Belajar</h1>
+  <canvas id="studyChart"></canvas>
+</section>
+
+  <!-- RIWAYAT -->
+<section id="history" class="page hidden">
+  <h1>📝 Riwayat Belajar</h1>
+  <button onclick="filterHistory('day')">Hari Ini</button>
+  <button onclick="filterHistory('month')">Bulan Ini</button>
+  <button onclick="filterHistory('year')">Tahun Ini</button>
+  <button onclick="filterHistory('all')">Semua</button>
+  <ul id="historyList"></ul>
+</section>
+
+
+  <!-- GAME -->
+<section id="game" class="page hidden">
+  <h1>🎮 Break Time Game</h1>
+  <p>Tangkap universitas sebanyak mungkin!</p>
+  <p>Score: <span id="score">0</span></p>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+  <br>
+  <button onclick="startGame()">Mulai Game</button>\
+</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
