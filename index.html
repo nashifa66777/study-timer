@@ -35,9 +35,10 @@
   <h3>🎵 Focus Sound</h3>
   <select id="soundSelect" onchange="changeSound()">
     <option value="off">Off</option>
-    <option value="rain">Rain</option>
-    <option value="forest">Forest</option>
-    <option value="whitenoise">White Noise</option>
+    <option value="disneypiano">Disney Piano</option>
+    <option value="lofisound">Lofi Sound</option>
+    <option value="relaxcalm">Relax Calm</option>
+    <option value="taylorswiftpiano">Taylor Swift Song Piano</option>
   </select>
   <audio id="focusAudio" loop></audio>
 
@@ -85,6 +86,7 @@
   <canvas id="gameCanvas" width="400" height="400"></canvas>
   <br>
   <button onclick="startGame()">Mulai Game</button>\
+  <button onclick="stopGameManually()" class="game-btn stop">⛔ Stop Game</button>
 </section>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
