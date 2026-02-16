@@ -91,7 +91,6 @@ function stopTimer() {
 });
 
   localStorage.setItem("historyData", JSON.stringify(historyData));
-  checkBadges(seconds);
 
   // 🎯 Tambah ke total hari ini
   todaySeconds += seconds;
@@ -215,16 +214,43 @@ function updateChart() {
 
   let ctx = canvas.getContext("2d");
 
-  let dates = [...new Set(historyData.map(i => i.date))];
-  let totals = dates.map(d => historyData
-    .filter(i => i.date === d)
-    .reduce((a,b)=>a+b.time,0)/3600);
+  let dates = [...new Set(historyData.map(i => i.dateText))];
+
+  let totals = dates.map(d =>
+    historyData
+      .filter(i => i.dateText === d)
+      .reduce((a, b) => a + b.time, 0) / 3600
+  );
 
   if (studyChartInstance) studyChartInstance.destroy();
 
   studyChartInstance = new Chart(ctx, {
     type: 'bar',
-    data: { labels: dates, datasets: [{ label: 'Jam Belajar', data: totals }] }
+    data: {
+      labels: dates,
+      datasets: [{
+        label: 'Jam Belajar',
+        data: totals,
+        backgroundColor: "#4CAF50"
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: "white"   // 🔥 INI bikin "Jam Belajar" jadi putih
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: "white" } // tanggal di bawah jadi putih
+        },
+        y: {
+          ticks: { color: "white" } // angka jam jadi putih
+        }
+      }
+    }
   });
 }
 
@@ -343,12 +369,34 @@ function checkGameTime() {
   }
 }
 
-
 function stopGame() {
   clearInterval(gameInterval);
   gameRunning = false;
+
+  // 🧹 Hapus semua objek game
+  stars = [];
+  score = 0;
+
+  // 🧼 Bersihkan layar canvas
+  if (ctx) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Reset skor tampilan
+  let scoreEl = document.getElementById("score");
+  if (scoreEl) scoreEl.innerText = "0";
 }
 
+function stopGameManually() {
+  if (!gameRunning) return;
+
+  stopGame();
+
+  alert("🛑 Game dihentikan.\nAyo lanjut belajar ya! 📚");
+
+  // reset waktu main supaya tidak dianggap habis 5 menit
+  gameStartTime = null;
+}
 
 // ================= INIT =================
 function checkNewDay() {
