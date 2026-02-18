@@ -11,8 +11,6 @@ let historyData = JSON.parse(localStorage.getItem("historyData")) || [];
 let dailyTarget = parseInt(localStorage.getItem("dailyTarget")) || 0;
 
 // ================= GAME PROGRESS DATA =================
-let xp = parseInt(localStorage.getItem("xp")) || 0;
-let level = parseInt(localStorage.getItem("level")) || 1;
 let streak = parseInt(localStorage.getItem("streak")) || 0;
 let lastStudyDate = localStorage.getItem("lastStudyDate") || null;
 
@@ -97,7 +95,6 @@ function stopTimer() {
   localStorage.setItem("todaySeconds", todaySeconds);
 
   // 🎮 Reward
-  addXP(Math.floor(seconds / 60));
   updateStreak();
 
   // 🔄 UPDATE UI DULU
@@ -258,13 +255,6 @@ function updateChart() {
 
 
 // ================= XP SYSTEM =================
-function addXP(minutes) {
-  xp += minutes * 10;
-  while (xp >= 100) { xp -= 100; level++; alert("🎉 Level Up!"); }
-  localStorage.setItem("xp", xp);
-  localStorage.setItem("level", level);
-}
-
 
 function updateStreak() {
   let today = new Date().toLocaleDateString();
@@ -423,6 +413,7 @@ window.onload = () => {
   updateChart();
   showPage("dashboard");
 };
+
 
 
 
