@@ -408,11 +408,11 @@ window.onload = () => {
   document.getElementById("todayTotal").innerText = formatTime(todaySeconds);
 
   updateHistory();
-  updateBadgeUI();
   updateProgressBar();
   updateChart();
   showPage("dashboard");
 };
+
 
 
 
