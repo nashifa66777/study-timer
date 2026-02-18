@@ -128,16 +128,18 @@ function changeSound() {
     relaxcalm: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/relaxcalm.mp3",
     taylorswiftpiano: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/taylorswiftpiano.mp3"
   };
-
+  
   if (choice === "off") {
     audio.pause();
     audio.src = "";
   } else {
     audio.src = sounds[choice];
     audio.loop = true; // biar muter terus
-    audio.play();
+    audio.load();
+    audio.play().catch(err => {
+      console.log("Autoplay blocked:", err);
+    });
   }
-}
 
 
 // ================= TARGET =================
@@ -421,5 +423,6 @@ window.onload = () => {
   updateChart();
   showPage("dashboard");
 };
+
 
 
