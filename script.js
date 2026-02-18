@@ -123,10 +123,10 @@ function changeSound() {
   let choice = document.getElementById("soundSelect").value;
 
   const sounds = {
-    disneypiano: "sha256:79cdb1010a15f0c491bf6395f9ad5284f959635808f5585eedbdb01f784cac5d",
-    lofisound: "sha256:7a3ab7b6e785a1c3562c56ff5769593b53119172bb9d86a10f50a1aa010a4bd3",
-    relaxcalm: "sha256:c6b8846e45e897ba0df077128c15db59a5487d4fd13b29ec5a4dcfa82eb48e39",
-    taylorswiftpiano: "sha256:725bcba4ece54ef8103b68a8aec344fa071f4e66891be6a46b92c4211ef7d21e"
+    disneypiano: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/disneypiano.mp3",
+    lofisound: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/lofisound.mp3",
+    relaxcalm: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/relaxcalm.mp3",
+    taylorswiftpiano: "https://github.com/nashifa66777/study-timer/releases/download/v1-sound/taylorswiftpiano.mp3"
   };
 
   if (choice === "off") {
@@ -421,4 +421,5 @@ window.onload = () => {
   updateChart();
   showPage("dashboard");
 };
+
 
