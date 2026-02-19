@@ -137,6 +137,7 @@ function changeSound() {
       console.log("Autoplay blocked:", err);
     });
   }
+}
 
 
 // ================= TARGET =================
@@ -412,6 +413,7 @@ window.onload = () => {
   updateChart();
   showPage("dashboard");
 };
+
 
 
 
