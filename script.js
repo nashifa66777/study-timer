@@ -414,6 +414,8 @@ window.onload = () => {
   showPage("dashboard");
 };
 
+console.log("JS Loaded Sampai Bawah");
+
 
 
 
