@@ -270,7 +270,7 @@ function updateStreak() {
 // ================= GAME =================
 let canvas, ctx;
 let playerImg = new Image(); playerImg.src = "player.png";
-let itemFiles = ["item1.png","item2.png","item3.jpg","item4.png"];
+let itemFiles = ["item1.png","item2.png","item3.png","item4.png","item5.png","item6.png"];
 let itemImages = itemFiles.map(f => { let i=new Image(); i.src=f; return i; });
 
 let player = { x:180, y:340, width:70, height:50 };
@@ -415,6 +415,7 @@ window.onload = () => {
 };
 
 console.log("JS Loaded Sampai Bawah");
+
 
 
 
